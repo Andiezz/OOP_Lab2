@@ -1,8 +1,10 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import aims.cart.Cart;
 import aims.media.Playable;
 import aims.media.Media;
+import exception.LimitExceededException;
+import exception.PlayerException;
 import org.json.simple.parser.ParseException;
 
 import java.awt.event.ActionEvent;
@@ -40,9 +42,7 @@ public class MediaStore extends JPanel {
                     cart.loadItemsFromJSON();
                     cart.addMedia(media);
                     cart.saveItemsToJSON();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ParseException ex) {
+                } catch (IOException | LimitExceededException | ParseException ex) {
                     throw new RuntimeException(ex);
                 }
 
@@ -56,7 +56,11 @@ public class MediaStore extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Playable playable = (Playable) media;
-                playable.play();
+                try {
+                    playable.play();
+                } catch (PlayerException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         }

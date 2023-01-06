@@ -1,7 +1,6 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import aims.media.CompactDisc;
-import aims.media.DigitalVideoDisc;
 import aims.store.Store;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

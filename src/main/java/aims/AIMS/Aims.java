@@ -3,7 +3,9 @@ package aims.AIMS;
 import aims.cart.Cart;
 import aims.media.*;
 import aims.store.Store;
-import lab05.screen.StoreScreen;
+import exception.LimitExceededException;
+import exception.PlayerException;
+import UIDesign.screen.StoreScreen;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -55,7 +57,7 @@ public class Aims {
         System.out.println("Please choose a number: 0-1-2-3-4-5");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException, PlayerException {
         // Initialize
         Store store = new Store();
         Cart cart = new Cart();
@@ -113,7 +115,11 @@ public class Aims {
                                         cart.addMedia(i);
                                     } else if (x == 2 && (i instanceof CompactDisc ||
                                             i instanceof DigitalVideoDisc)) {
-                                        ((Playable) i).play();
+                                        try {
+                                            ((Playable) i).play();
+                                        } catch (PlayerException e) {
+                                            throw new PlayerException("ERROR: Disc length is non-positive");
+                                        }
                                     } else if (x == 2 && i instanceof Book) {
                                         System.out.println("Play not available!");
                                     } else if (x == 0) {
@@ -148,7 +154,11 @@ public class Aims {
                         String tit = keyboard.nextLine();
                         for (Media i : store.getItemsInStore()) {
                             if (i.getTitle().equals(tit) && (i instanceof CompactDisc || i instanceof DigitalVideoDisc)) {
-                                ((Playable) i).play();
+                                try {
+                                    ((Playable) i).play();
+                                } catch (PlayerException e) {
+                                    throw new PlayerException("ERROR: Disc length is non-positive");
+                                }
                             } else if (i.getTitle().equals(tit) && i instanceof Book) {
                                 System.out.println("Play not available!");
                             }
@@ -280,7 +290,11 @@ public class Aims {
                         String tit = keyboard.nextLine();
                         for (Media i : cart.getItemsOrdered()) {
                             if (i.getTitle().equals(tit) && (i instanceof CompactDisc || i instanceof DigitalVideoDisc)) {
-                                ((Playable) i).play();
+                                try {
+                                    ((Playable) i).play();
+                                } catch (PlayerException e) {
+                                    throw new PlayerException("ERROR: Disc length is non-positive");
+                                }
                             } else if (i.getTitle().equals(tit) && i instanceof Book) {
                                 System.out.println("Play not available!");
                             }

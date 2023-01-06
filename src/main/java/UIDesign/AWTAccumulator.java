@@ -1,4 +1,4 @@
-package lab05;
+package UIDesign;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

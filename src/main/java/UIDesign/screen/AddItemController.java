@@ -1,15 +1,10 @@
-package lab05.screen;
+package UIDesign.screen;
 
-import aims.store.Store;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 
 public class AddItemController {
     @FXML

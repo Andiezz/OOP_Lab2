@@ -1,10 +1,6 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import aims.cart.Cart;
-import aims.media.Book;
-import aims.media.CompactDisc;
-import aims.media.DigitalVideoDisc;
-import aims.media.Media;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +29,7 @@ public class CartScreen extends JFrame {
            @Override
            public void run() {
                try {
-                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/lab05/screen/cart.fxml"));
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("/UIDesign/screen/cart.fxml"));
                    CartScreenController controller = new CartScreenController(cart);
                    loader.setController(controller);
                    Parent root = loader.load();

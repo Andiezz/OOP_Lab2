@@ -1,4 +1,4 @@
-package lab05.javafx;
+package UIDesign.javafx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

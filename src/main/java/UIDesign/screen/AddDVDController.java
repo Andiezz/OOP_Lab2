@@ -1,6 +1,5 @@
-package lab05.screen;
+package UIDesign.screen;
 
-import aims.media.Book;
 import aims.media.DigitalVideoDisc;
 import aims.store.Store;
 import javafx.fxml.FXML;

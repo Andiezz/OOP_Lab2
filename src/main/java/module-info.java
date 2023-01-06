@@ -6,11 +6,11 @@ module com.lab05 {
     requires javafx.swing;
     requires json.simple;
 
-    opens lab05.javafx;
-    exports lab05.javafx;
+    opens UIDesign.javafx;
+    exports UIDesign.javafx;
 
-    opens lab05.screen;
+    opens UIDesign.screen;
     opens aims.media;
 
-    provides javafx.application.Application with lab05.javafx.Painter;
+    provides javafx.application.Application with UIDesign.javafx.Painter;
 }

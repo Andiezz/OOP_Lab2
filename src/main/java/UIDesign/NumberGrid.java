@@ -1,4 +1,4 @@
-package lab05;
+package UIDesign;
 
 import javax.swing.*;
 import java.awt.*;

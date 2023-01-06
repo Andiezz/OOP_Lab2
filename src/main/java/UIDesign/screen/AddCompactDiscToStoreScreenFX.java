@@ -1,4 +1,4 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -9,22 +9,22 @@ import javafx.scene.Scene;
 import javax.swing.*;
 import java.io.IOException;
 
-public class AddBookToStoreScreenFX extends JFrame {
-    public AddBookToStoreScreenFX() {
+public class AddCompactDiscToStoreScreenFX extends JFrame {
+    public AddCompactDiscToStoreScreenFX() {
         super();
 
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
 
         this.setTitle("Update Store");
-        this.setSize(512, 324);
+        this.setSize(600, 500);
         this.setVisible(true);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/lab05/screen/addbook.fxml"));
-                    AddBookController controller = new AddBookController();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/UIDesign/screen/addCD.fxml"));
+                    AddCDController controller = new AddCDController();
                     loader.setController(controller);
                     Parent root = loader.load();
                     fxPanel.setScene(new Scene(root));
@@ -33,5 +33,9 @@ public class AddBookToStoreScreenFX extends JFrame {
                 }
             }
         });
+    }
+
+    public static void main(String[] args) {
+        AddCompactDiscToStoreScreenFX addCompactDiscToStoreScreenFX = new AddCompactDiscToStoreScreenFX();
     }
 }

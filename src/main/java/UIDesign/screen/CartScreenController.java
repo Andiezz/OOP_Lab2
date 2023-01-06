@@ -1,8 +1,9 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import aims.cart.Cart;
 import aims.media.*;
 import aims.store.Store;
+import exception.PlayerException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.FilteredList;
@@ -105,7 +106,7 @@ public class CartScreenController {
     }
 
     @FXML
-    void btnPlayPressed(MouseEvent event) {
+    void btnPlayPressed(MouseEvent event) throws PlayerException {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         Playable playable = (Playable) media;
         playable.play();

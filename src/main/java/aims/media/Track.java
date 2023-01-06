@@ -1,5 +1,7 @@
 package aims.media;
 
+import exception.PlayerException;
+
 import java.util.Scanner;
 
 public class Track implements Playable {
@@ -24,10 +26,14 @@ public class Track implements Playable {
     }
 
     @Override
-    public String play() {
-        String str = "Playing track: " + this.getTitle() +
-                "Track length: " + this.getLength();
-        return str;
+    public String play() throws PlayerException {
+        if(this.getLength() > 0) {
+            String str = "Playing track: " + this.getTitle() +
+                    "Track length: " + this.getLength();
+            return str;
+        } else {
+            throw new PlayerException("ERROR: Track length is non-positive!");
+        }
     }
 
     public static Track createTrack() {

@@ -1,6 +1,7 @@
 package aims.cart;
 
 import aims.media.*;
+import exception.LimitExceededException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.json.simple.JSONArray;
@@ -15,6 +16,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Cart {
+    public final static int MAX_NUMBERS_ORDERED = 20;
     private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public int getNumberOrdered() {
         return itemsOrdered.size();
@@ -24,9 +26,13 @@ public class Cart {
         return itemsOrdered;
     }
 
-    public void addMedia(Media item) {
-        itemsOrdered.add(item);
-        System.out.println("Item added successfully!");
+    public void addMedia(Media item) throws LimitExceededException {
+        if(itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+            itemsOrdered.add(item);
+            System.out.println("Item added successfully!");
+        } else {
+            throw new LimitExceededException("ERROR: The number of media has reached its limit");
+        }
     }
 
     public void removeMedia(Media item) {
@@ -102,7 +108,7 @@ public class Cart {
         return false;
     }
 
-    public void loadItemsFromJSON() throws IOException, ParseException {
+    public void loadItemsFromJSON() throws IOException, ParseException, LimitExceededException {
         FileReader reader = new FileReader("data/cart.json");
         JSONParser parser = new JSONParser();
         Object obj  = parser.parse(reader);

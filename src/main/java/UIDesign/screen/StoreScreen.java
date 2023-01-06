@@ -1,12 +1,9 @@
-package lab05.screen;
+package UIDesign.screen;
 
 import aims.cart.Cart;
-import aims.media.Book;
-import aims.media.CompactDisc;
-import aims.media.DigitalVideoDisc;
 import aims.store.Store;
 import aims.media.Media;
-import lab05.NumberGrid;
+import exception.LimitExceededException;
 import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
@@ -15,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class StoreScreen extends JFrame {
     private Store store;
@@ -135,10 +131,10 @@ public class StoreScreen extends JFrame {
             Cart cart = new Cart();
             try {
                 cart.loadItemsFromJSON();
-            } catch (IOException | ParseException exception) {
+            } catch (IOException | ParseException | LimitExceededException exception) {
                 throw new RuntimeException(exception);
             }
-            
+
             new CartScreen(cart);
             setVisible(false);
             dispose();

@@ -1,5 +1,7 @@
 package aims.media;
 
+import exception.NegativeNumberException;
+
 import java.util.Comparator;
 import java.util.Objects;
 
